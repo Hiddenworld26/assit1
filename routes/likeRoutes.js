@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {likePost , unlikePost} = require('../controllers/likeController');
 
-
-router.post('/like', likePost);
-router.post('/unlike', unlikePost);
+const protect = require('../middleware/authMiddleware')
+router.post('/like', protect , likePost);
+router.post('/unlike', protect, unlikePost);
 
 module.exports = router;
